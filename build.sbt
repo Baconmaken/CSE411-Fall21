@@ -47,7 +47,7 @@ lazy val esjcParser = {
   `esjc-parser`
 }
 
-/*
+
 lazy val esjcAst = {
   val `esjc-ast` = (project in file("esjc-ast")).
     settings(commonSettings: _*).
@@ -55,6 +55,7 @@ lazy val esjcAst = {
   `esjc-ast`
 }
 
+/*
 lazy val esjcTypeChecker = {
   val `esjc-typechecker` = (project in file("esjc-typechecker")).
     settings(commonSettings: _*).

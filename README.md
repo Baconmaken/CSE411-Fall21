@@ -7,3 +7,4 @@ This material was originally created by [Robby at Kansas State University](http:
 ## Milestones
 
 1. See [esjc-parser/README.md](esjc-parser/README.md)
+2. See [esjc-ast/README.md](esjc-ast/README.md)
