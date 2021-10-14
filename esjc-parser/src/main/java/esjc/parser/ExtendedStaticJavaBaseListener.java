@@ -1,4 +1,4 @@
-// Generated from esjc-parser/src/main/java/esjc/parser/ExtendedStaticJava.g4 by ANTLR 4.8
+// Generated from C:/Users/jhpae/IdeaProjects/CSE411-Fall21/esjc-parser/src/main/java/esjc/parser\ExtendedStaticJava.g4 by ANTLR 4.9
 package esjc.parser;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -23,6 +23,30 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCompilationUnit(ExtendedStaticJavaParser.CompilationUnitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSimpleClassDefinition(ExtendedStaticJavaParser.SimpleClassDefinitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSimpleClassDefinition(ExtendedStaticJavaParser.SimpleClassDefinitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPublicFieldDeclaration(ExtendedStaticJavaParser.PublicFieldDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPublicFieldDeclaration(ExtendedStaticJavaParser.PublicFieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -83,6 +107,18 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMethodDeclaration(ExtendedStaticJavaParser.MethodDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterType(ExtendedStaticJavaParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType(ExtendedStaticJavaParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -208,6 +244,30 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAssign(ExtendedStaticJavaParser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssign(ExtendedStaticJavaParser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLhs(ExtendedStaticJavaParser.LhsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLhs(ExtendedStaticJavaParser.LhsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIfStatement(ExtendedStaticJavaParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -256,25 +316,85 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdExp(ExtendedStaticJavaParser.IdExpContext ctx) { }
+	@Override public void enterForStatement(ExtendedStaticJavaParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdExp(ExtendedStaticJavaParser.IdExpContext ctx) { }
+	@Override public void exitForStatement(ExtendedStaticJavaParser.ForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTrueLiteral(ExtendedStaticJavaParser.TrueLiteralContext ctx) { }
+	@Override public void enterForInits(ExtendedStaticJavaParser.ForInitsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTrueLiteral(ExtendedStaticJavaParser.TrueLiteralContext ctx) { }
+	@Override public void exitForInits(ExtendedStaticJavaParser.ForInitsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForUpdates(ExtendedStaticJavaParser.ForUpdatesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForUpdates(ExtendedStaticJavaParser.ForUpdatesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDowhileStatement(ExtendedStaticJavaParser.DowhileStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDowhileStatement(ExtendedStaticJavaParser.DowhileStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIncdecStatement(ExtendedStaticJavaParser.IncdecStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIncdecStatement(ExtendedStaticJavaParser.IncdecStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIncdec(ExtendedStaticJavaParser.IncdecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIncdec(ExtendedStaticJavaParser.IncdecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayAccessExp(ExtendedStaticJavaParser.ArrayAccessExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayAccessExp(ExtendedStaticJavaParser.ArrayAccessExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -287,6 +407,66 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInvokeExp(ExtendedStaticJavaParser.InvokeExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBinaryExp(ExtendedStaticJavaParser.BinaryExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBinaryExp(ExtendedStaticJavaParser.BinaryExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFalseLiteral(ExtendedStaticJavaParser.FalseLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFalseLiteral(ExtendedStaticJavaParser.FalseLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdExp(ExtendedStaticJavaParser.IdExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdExp(ExtendedStaticJavaParser.IdExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCondExp(ExtendedStaticJavaParser.CondExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondExp(ExtendedStaticJavaParser.CondExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTrueLiteral(ExtendedStaticJavaParser.TrueLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTrueLiteral(ExtendedStaticJavaParser.TrueLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -316,6 +496,18 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFieldAccessExp(ExtendedStaticJavaParser.FieldAccessExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFieldAccessExp(ExtendedStaticJavaParser.FieldAccessExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterUnaryExp(ExtendedStaticJavaParser.UnaryExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -340,25 +532,25 @@ public class ExtendedStaticJavaBaseListener implements ExtendedStaticJavaListene
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinaryExp(ExtendedStaticJavaParser.BinaryExpContext ctx) { }
+	@Override public void enterNewExp(ExtendedStaticJavaParser.NewExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinaryExp(ExtendedStaticJavaParser.BinaryExpContext ctx) { }
+	@Override public void exitNewExp(ExtendedStaticJavaParser.NewExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFalseLiteral(ExtendedStaticJavaParser.FalseLiteralContext ctx) { }
+	@Override public void enterArrayInit(ExtendedStaticJavaParser.ArrayInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFalseLiteral(ExtendedStaticJavaParser.FalseLiteralContext ctx) { }
+	@Override public void exitArrayInit(ExtendedStaticJavaParser.ArrayInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
