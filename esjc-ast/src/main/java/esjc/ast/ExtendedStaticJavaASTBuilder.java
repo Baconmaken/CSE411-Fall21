@@ -372,6 +372,22 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public IfStatement visitIfStatement(final IfStatementContext ctx) {
+    final IfStatement result = this.ast.newIfStatement();
+    final Block ifBody = this.ast.newBlock();
+    result.setThenStatement(ifBody);
+
+    result.setExpression(this.build(ctx.exp()));
+
+    final List<StatementContext> statements = ctx.statement();
+    if (statements != null) {
+      builds(ifBody.statements(), statements);
+    }
+
+    return result;
+  }
+
+  @Override
   public WhileStatement visitWhileStatement(final WhileStatementContext ctx) {
     final WhileStatement result = this.ast.newWhileStatement();
     final Block whileBody = this.ast.newBlock();
