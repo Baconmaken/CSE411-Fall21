@@ -134,6 +134,25 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public ExpressionStatement visitAssignStatement(AssignStatementContext ctx) {
+    return this.ast.newExpressionStatement(this.<Assignment> build(ctx.assign()));
+  }
+
+  @Override
+  public Assignment visitAssign(AssignContext ctx) {
+    final Assignment result = this.ast.newAssignment();
+
+    final LhsContext lhs = ctx.lhs();
+    result.setLeftHandSide(this.build(ctx.lhs()));
+
+    result.setOperator(Assignment.Operator.ASSIGN);
+
+    result.setRightHandSide(this.build(ctx.exp()));
+
+    return result;
+  }
+
+  @Override
   public InfixExpression visitBinaryExp(final BinaryExpContext ctx) {
     final InfixExpression result = this.ast.newInfixExpression();
 
@@ -179,6 +198,12 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
     final CompilationUnit result = this.ast.newCompilationUnit();
 
     add(result.types(), this.<TypeDeclaration> build(ctx.classDefinition()));
+
+    final List<SimpleClassDefinitionContext> SCDefinitions = ctx
+            .simpleClassDefinition();
+    if (SCDefinitions != null) {
+      builds(result.types(), SCDefinitions);
+    }
 
     return result;
   }
@@ -338,12 +363,45 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public FieldDeclaration visitPublicFieldDeclaration(PublicFieldDeclarationContext ctx) {
+    final VariableDeclarationFragment vdf = this.ast
+            .newVariableDeclarationFragment();
+    final FieldDeclaration result = this.ast
+            .newFieldDeclaration(vdf);
+
+    add(
+            result.modifiers(),
+            this.ast.newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
+
+    result.setType(this.build(ctx.type()));
+
+    vdf.setName(this.ast.newSimpleName(ctx.ID().getText()));
+
+    return result;
+  }
+
+  @Override
   public ReturnStatement visitReturnStatement(final ReturnStatementContext ctx) {
     final ReturnStatement result = this.ast.newReturnStatement();
 
     final ExpContext exp = ctx.exp();
     if (exp != null) {
       result.setExpression(this.build(exp));
+    }
+
+    return result;
+  }
+
+  @Override
+  public TypeDeclaration visitSimpleClassDefinition(SimpleClassDefinitionContext ctx) {
+    final TypeDeclaration result = this.ast.newTypeDeclaration();
+
+    result.setName(this.ast.newSimpleName(ctx.ID().getText()));
+
+    final List<PublicFieldDeclarationContext> PFDeclarations = ctx
+            .publicFieldDeclaration();
+    if (PFDeclarations != null) {
+      builds(result.bodyDeclarations(), PFDeclarations);
     }
 
     return result;
@@ -375,13 +433,22 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   public IfStatement visitIfStatement(final IfStatementContext ctx) {
     final IfStatement result = this.ast.newIfStatement();
     final Block ifBody = this.ast.newBlock();
-    result.setThenStatement(ifBody);
+    final Block elseBody = this.ast.newBlock();
 
     result.setExpression(this.build(ctx.exp()));
 
-    final List<StatementContext> statements = ctx.statement();
-    if (statements != null) {
-      builds(ifBody.statements(), statements);
+    result.setThenStatement(ifBody);
+
+    final List<StatementContext> ifstatements = ctx.ts;
+    if (ifstatements != null) {
+      builds(ifBody.statements(), ifstatements);
+    }
+
+    result.setElseStatement(elseBody);
+
+    final List<StatementContext> elsestatements = ctx.fs;
+    if (elsestatements != null) {
+      builds(elseBody.statements(), elsestatements);
     }
 
     return result;

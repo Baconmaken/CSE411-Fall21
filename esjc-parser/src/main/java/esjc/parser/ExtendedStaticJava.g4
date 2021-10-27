@@ -92,7 +92,9 @@ assign
   ;
 
 lhs
-  : ID | exp '.' ID | exp '[' exp ']'
+  : ID                       
+  | exp '.' ID
+  | exp '[' exp ']'
   ;
 
 ifStatement
