@@ -3,7 +3,6 @@ package esjc.ast;
 import esjc.parser.ExtendedStaticJavaBaseVisitor;
 import esjc.parser.ExtendedStaticJavaParser.*;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.HashMap;
