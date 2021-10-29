@@ -3,6 +3,7 @@ package esjc.ast;
 import esjc.parser.ExtendedStaticJavaBaseVisitor;
 import esjc.parser.ExtendedStaticJavaParser.*;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.HashMap;
@@ -134,6 +135,40 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public ArrayAccess visitArrayAccessExp(ArrayAccessExpContext ctx) {
+    final ArrayAccess result = this.ast.newArrayAccess();
+
+    result.setArray(this.build(ctx.e1));
+    result.setIndex(this.build(ctx.e2));
+
+    return result;
+  }
+
+  @Override
+  public ArrayAccess visitArrayAccessLhs(ArrayAccessLhsContext ctx) {
+    final ArrayAccess result = this.ast.newArrayAccess();
+
+    result.setArray(this.build(ctx.e1));
+    result.setIndex(this.build(ctx.e2));
+
+    return result;
+  }
+
+  @Override
+  public ArrayInitializer visitArrayInit(ArrayInitContext ctx) {
+    final ArrayInitializer result = this.ast.newArrayInitializer();
+
+    builds(result.expressions(), ctx.exp());
+
+    return result;
+  }
+
+  @Override
+  public ArrayType visitArrayType(ArrayTypeContext ctx) {
+    return this.ast.newArrayType(this.build(ctx.nonArrayType()));
+  }
+
+  @Override
   public ExpressionStatement visitAssignStatement(AssignStatementContext ctx) {
     return this.ast.newExpressionStatement(this.<Assignment> build(ctx.assign()));
   }
@@ -142,7 +177,6 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   public Assignment visitAssign(AssignContext ctx) {
     final Assignment result = this.ast.newAssignment();
 
-    final LhsContext lhs = ctx.lhs();
     result.setLeftHandSide(this.build(ctx.lhs()));
 
     result.setOperator(Assignment.Operator.ASSIGN);
@@ -194,15 +228,52 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public SimpleType visitClassType(ClassTypeContext ctx) {
+    return this.ast.newSimpleType(this.ast.newSimpleName(ctx.ID().getText()));
+  }
+
+  @Override
   public CompilationUnit visitCompilationUnit(final CompilationUnitContext ctx) {
     final CompilationUnit result = this.ast.newCompilationUnit();
 
+    final List<SimpleClassDefinitionContext> SCDefinitionsH = ctx.sd1;
+    if (SCDefinitionsH != null) {
+      builds(result.types(), SCDefinitionsH);
+    }
+
     add(result.types(), this.<TypeDeclaration> build(ctx.classDefinition()));
 
-    final List<SimpleClassDefinitionContext> SCDefinitions = ctx
-            .simpleClassDefinition();
-    if (SCDefinitions != null) {
-      builds(result.types(), SCDefinitions);
+    final List<SimpleClassDefinitionContext> SCDefinitionsT = ctx.sd2;
+    if (SCDefinitionsT != null) {
+      builds(result.types(), SCDefinitionsT);
+    }
+
+    return result;
+  }
+
+  @Override
+  public ConditionalExpression visitCondExp(CondExpContext ctx) {
+    final ConditionalExpression result = this.ast.newConditionalExpression();
+
+    result.setExpression(this.build(ctx.e1));
+    result.setThenExpression(this.build(ctx.e2));
+    result.setElseExpression(this.build(ctx.e3));
+
+    return result;
+  }
+
+  @Override
+  public DoStatement visitDowhileStatement(DowhileStatementContext ctx) {
+    final DoStatement result = this.ast.newDoStatement();
+
+    final Block doBody = this.ast.newBlock();
+    result.setBody(doBody);
+
+    result.setExpression(this.build(ctx.exp()));
+
+    final List<StatementContext> statements = ctx.statement();
+    if (statements != null) {
+      builds(doBody.statements(), statements);
     }
 
     return result;
@@ -214,8 +285,97 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public FieldAccess visitFieldAccessExp(FieldAccessExpContext ctx) {
+    final FieldAccess result = this.ast.newFieldAccess();
+
+    result.setExpression(this.build(ctx.exp()));
+    result.setName(this.ast.newSimpleName(ctx.ID().getText()));
+
+    return result;
+  }
+
+  @Override
+  public FieldAccess visitFieldAccessLhs(FieldAccessLhsContext ctx) {
+    final FieldAccess result = this.ast.newFieldAccess();
+
+    result.setExpression(this.build(ctx.exp()));
+    result.setName(this.ast.newSimpleName(ctx.ID().getText()));
+
+    return result;
+  }
+
+  @Override
+  public FieldDeclaration visitFieldDeclaration(FieldDeclarationContext ctx) {
+    final VariableDeclarationFragment vdf = this.ast
+            .newVariableDeclarationFragment();
+    final FieldDeclaration result = this.ast
+            .newFieldDeclaration(vdf);
+
+    add(
+            result.modifiers(),
+            this.ast.newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
+
+    result.setType(this.build(ctx.type()));
+
+    vdf.setName(this.ast.newSimpleName(ctx.ID().getText()));
+
+    return result;
+  }
+
+  @Override
+  public ForStatement visitForStatement(ForStatementContext ctx) {
+    final ForStatement result = this.ast.newForStatement();
+
+    if (ctx.forInits() != null) {
+      final ForInitsContext inits = ctx.forInits();
+      builds(result.initializers(), inits.assign());
+    }
+
+    if (ctx.exp() != null) {
+      result.setExpression(this.build(ctx.exp()));
+    }
+
+    if (ctx.forUpdates() != null) {
+      final ForUpdatesContext updates = ctx.forUpdates();
+      builds(result.updaters(), updates.incdec());
+    }
+
+    final Block forBody = this.ast.newBlock();
+    result.setBody(forBody);
+
+    final List<StatementContext> statements = ctx.statement();
+    if (statements != null) {
+      builds(forBody.statements(), statements);
+    }
+
+    return result;
+  }
+
+  @Override
   public SimpleName visitIdExp(final IdExpContext ctx) {
     return this.ast.newSimpleName(ctx.ID().getText());
+  }
+
+  @Override
+  public SimpleName visitIdLhs(final IdLhsContext ctx) {
+    return this.ast.newSimpleName(ctx.ID().getText());
+  }
+
+  @Override
+  public ExpressionStatement visitIncdecStatement(IncdecStatementContext ctx) {
+    return this.ast.newExpressionStatement(this.<PostfixExpression> build(ctx.incdec()));
+  }
+
+  @Override
+  public PostfixExpression visitIncdec(IncdecContext ctx) {
+    final PostfixExpression result = this.ast.newPostfixExpression();
+
+    result.setOperator(ExtendedStaticJavaASTBuilder.incdecMap.get(ctx.op
+            .getText()));
+
+    result.setOperand(this.build(ctx.lhs()));
+
+    return result;
   }
 
   @Override
@@ -341,6 +501,36 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
   }
 
   @Override
+  public ClassInstanceCreation visitNewExp(NewExpContext ctx) {
+    final ClassInstanceCreation result = this.ast.newClassInstanceCreation();
+
+    result.setType(this.ast.newSimpleType(this.ast
+              .newSimpleName(ctx.ID().getText())));
+
+    return result;
+  }
+
+  @Override
+  public ArrayCreation visitNewArrExp(NewArrExpContext ctx) {
+    final ArrayCreation result = this.ast.newArrayCreation();
+
+    result.setType(this.ast.newArrayType(this.build(ctx.type())));
+
+    if (ctx.exp() != null) {
+      add(
+              result.dimensions(),
+              this.build(ctx.exp())
+      );
+    }
+
+    if (ctx.arrayInit() != null) {
+      result.setInitializer(this.build(ctx.arrayInit()));
+    }
+
+    return result;
+  }
+
+  @Override
   public Type visitNonVoidReturnType(final NonVoidReturnTypeContext ctx) {
     return this.build(ctx.type());
   }
@@ -360,6 +550,15 @@ ExtendedStaticJavaBaseVisitor<ASTNode> {
     result.setName(this.ast.newSimpleName(ctx.ID().getText()));
 
     return result;
+  }
+
+  @Override
+  public ParenthesizedExpression visitParenExp(ParenExpContext ctx) {
+     final ParenthesizedExpression result = this.ast.newParenthesizedExpression();
+
+     result.setExpression(this.build(ctx.exp()));
+
+     return result;
   }
 
   @Override

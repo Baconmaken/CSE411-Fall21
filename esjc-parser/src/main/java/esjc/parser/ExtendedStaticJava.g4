@@ -1,9 +1,9 @@
 grammar ExtendedStaticJava;
 
 compilationUnit
-  : simpleClassDefinition*
+  : sd1+=simpleClassDefinition*
     classDefinition
-    simpleClassDefinition*
+    sd2+=simpleClassDefinition*
     EOF
   ;
 
@@ -43,12 +43,26 @@ methodDeclaration
   ;
 
 type
-  : ( basicType | ID) ( '[' ']' )?
+  : nonArrayType
+  | arrayType
+  ;
+
+nonArrayType
+  : basicType
+  | classType
   ;
 
 basicType
   : 'boolean'                #BooleanType
   | 'int'                    #IntType
+  ;
+
+classType
+  : ID
+  ;
+
+arrayType
+  : nonArrayType '[' ']'
   ;
 
 returnType
@@ -92,9 +106,9 @@ assign
   ;
 
 lhs
-  : ID                       
-  | exp '.' ID
-  | exp '[' exp ']'
+  : ID                  #IdLhs
+  | exp '.' ID          #FieldAccessLhs
+  | e1=exp '[' e2=exp ']'     #ArrayAccessLhs
   ;
 
 ifStatement
@@ -136,7 +150,7 @@ incdecStatement
   ;
 
 incdec
-  : lhs '++' | lhs '--'
+  : lhs op=('++' | '--')
   ;
 
 exp
@@ -169,10 +183,10 @@ exp
   | invoke                   #InvokeExp
   | ID                       #IdExp
   | 'new' ID '(' ')'         #NewExp
-  | 'new' type '[' exp ']'   #NewExp
-  | 'new' type '[' ']' arrayInit  #NewExp
+  | 'new' type '[' exp ']'   #NewArrExp
+  | 'new' type '[' ']' arrayInit  #NewArrExp
   | exp '.' ID               #FieldAccessExp
-  | exp '[' exp ']'          #ArrayAccessExp
+  | e1=exp '[' e2=exp ']'          #ArrayAccessExp
   | e1=exp '?' e2=exp ':' e3=exp  #CondExp
   ;
 

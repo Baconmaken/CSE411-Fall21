@@ -65,6 +65,12 @@ public interface ExtendedStaticJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitType(ExtendedStaticJavaParser.TypeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ExtendedStaticJavaParser#nonArrayType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNonArrayType(ExtendedStaticJavaParser.NonArrayTypeContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code BooleanType}
 	 * labeled alternative in {@link ExtendedStaticJavaParser#basicType}.
 	 * @param ctx the parse tree
@@ -78,6 +84,18 @@ public interface ExtendedStaticJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIntType(ExtendedStaticJavaParser.IntTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ExtendedStaticJavaParser#classType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassType(ExtendedStaticJavaParser.ClassTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ExtendedStaticJavaParser#arrayType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayType(ExtendedStaticJavaParser.ArrayTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code VoidType}
 	 * labeled alternative in {@link ExtendedStaticJavaParser#returnType}.
@@ -135,11 +153,26 @@ public interface ExtendedStaticJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign(ExtendedStaticJavaParser.AssignContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ExtendedStaticJavaParser#lhs}.
+	 * Visit a parse tree produced by the {@code IdLhs}
+	 * labeled alternative in {@link ExtendedStaticJavaParser#lhs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLhs(ExtendedStaticJavaParser.LhsContext ctx);
+	T visitIdLhs(ExtendedStaticJavaParser.IdLhsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code FieldAccessLhs}
+	 * labeled alternative in {@link ExtendedStaticJavaParser#lhs}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFieldAccessLhs(ExtendedStaticJavaParser.FieldAccessLhsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ArrayAccessLhs}
+	 * labeled alternative in {@link ExtendedStaticJavaParser#lhs}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayAccessLhs(ExtendedStaticJavaParser.ArrayAccessLhsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ExtendedStaticJavaParser#ifStatement}.
 	 * @param ctx the parse tree
@@ -200,6 +233,13 @@ public interface ExtendedStaticJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIncdec(ExtendedStaticJavaParser.IncdecContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code NewArrExp}
+	 * labeled alternative in {@link ExtendedStaticJavaParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewArrExp(ExtendedStaticJavaParser.NewArrExpContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ArrayAccessExp}
 	 * labeled alternative in {@link ExtendedStaticJavaParser#exp}.
