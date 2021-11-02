@@ -75,7 +75,7 @@ public class TypeChecker {
      */
     public Error(@NonNull final ASTNode node, @NonNull final String msg) {
       super(msg);
-      assert (msg != null) && (node != null);
+      assert (msg != null);
       this.node = node;
     }
   }
