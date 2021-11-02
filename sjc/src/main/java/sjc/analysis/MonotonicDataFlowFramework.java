@@ -1,18 +1,11 @@
 package sjc.analysis;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
 import org.eclipse.jdt.core.dom.Statement;
-
 import sjc.annotation.NonNull;
 import sjc.annotation.NonNullElements;
 import sjc.util.Util;
+
+import java.util.*;
 
 /**
  * This classs represents the Monotonic Data-Flow Framework (MDF) for
@@ -27,7 +20,7 @@ public abstract class MonotonicDataFlowFramework<E> {
   CFG cfg;
 
   protected @NonNullElements
-  Map<Statement, Set<E>> outMap = new HashMap<>();
+  Map<Statement, Set<E>> outMap = new LinkedHashMap<>();
 
   protected @NonNullElements
   Set<E> init;
@@ -53,7 +46,7 @@ public abstract class MonotonicDataFlowFramework<E> {
    *          greatest lower bound (GLB).
    */
   public MonotonicDataFlowFramework(@NonNull final CFG cfg,
-      final boolean isForward, final boolean isLUB) {
+                                    final boolean isForward, final boolean isLUB) {
     assert cfg != null;
     this.cfg = cfg;
     this.isForward = isForward;
@@ -197,9 +190,14 @@ public abstract class MonotonicDataFlowFramework<E> {
       sb.setLength(0);
       list.add(str.substring(0, str.length() - 5) + "\n");
     }
-    Collections.sort(list);
-    for (final String s : list) {
-      sb.append(s);
+    if (isForward) {
+      for (int i = 0; i < list.size(); i++) {
+        sb.append(list.get(i));
+      }
+    } else {
+      for (int i = list.size() - 1; i >= 0; i--) {
+        sb.append(list.get(i));
+      }
     }
     return sb.toString();
   }
