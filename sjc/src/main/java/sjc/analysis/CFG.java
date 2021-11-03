@@ -1,11 +1,6 @@
 package sjc.analysis;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Block;
@@ -32,15 +27,15 @@ public class CFG {
 
     // we model E as a function that maps statement to set of
     // statements instead of as relations
-    Map<Statement, Set<Statement>> E = new HashMap<>();
+    Map<Statement, Set<Statement>> E = new LinkedHashMap<>();
 
     Statement b_init;
 
     Statement b_last;
 
-    Map<Statement, Set<Statement>> succs = new HashMap<>();
+    protected Map<Statement, Set<Statement>> succs = new LinkedHashMap<>();
 
-    Map<Statement, Set<Statement>> preds = new HashMap<>();
+    protected Map<Statement, Set<Statement>> preds = new LinkedHashMap<>();
 
     protected void addEdge(final Statement s1, final Statement s2) {
       if ((s1 instanceof ReturnStatement) && (s2 != this.b_last)) {
@@ -256,7 +251,6 @@ public class CFG {
   }
 
   protected String toString(final Map<Statement, Set<Statement>> m) {
-    final TreeSet<String> set = new TreeSet<>();
     final StringBuilder sb = new StringBuilder();
     for (final Statement s : m.keySet()) {
       sb.append(getStatementString(s));
@@ -271,10 +265,7 @@ public class CFG {
       }
       final String str = sb.toString();
       sb.setLength(0);
-      set.add(str.substring(0, str.length() - 5) + "\n");
-    }
-    for (final String s : set) {
-      sb.append(s);
+      sb.append(str.substring(0, str.length() - 5) + "\n");
     }
     return sb.toString();
   }

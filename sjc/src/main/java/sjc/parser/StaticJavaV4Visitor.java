@@ -1,4 +1,4 @@
-// Generated from /Users/robby/Repositories/706/f20-706-project/sjc/src/main/java/sjc/parser/StaticJavaV4.g4 by ANTLR 4.8
+// Generated from C:/Users/UNIST_PLaSE/IdeaProjects/compiler-solution/sjc/src/main/java/sjc/parser\StaticJavaV4.g4 by ANTLR 4.9
 package sjc.parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
