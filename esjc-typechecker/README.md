@@ -1,6 +1,6 @@
-# Solo Project Milestone III: Type Checker for Extended Static Java
+# Milestone III: Type Checker for Extended Static Java
 
-**Due: October 12, 2020; 11:59pm US Central**
+**Due: November 17, 2021; 11:59pm KST**
 
 
 ## Problem Description
