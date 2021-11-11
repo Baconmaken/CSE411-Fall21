@@ -2697,10 +2697,32 @@ public class ExtendedStaticJavaParser extends Parser {
 				break;
 			case 5:
 				{
-				_localctx = new UnaryExpContext(_localctx);
+				_localctx = new IdExpContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(342);
+				match(ID);
+				}
+				break;
+			case 6:
+				{
+				_localctx = new ParenExpContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(343);
+				match(T__7);
+				setState(344);
+				exp(0);
+				setState(345);
+				match(T__10);
+				}
+				break;
+			case 7:
+				{
+				_localctx = new UnaryExpContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(347);
 				((UnaryExpContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__27 || _la==T__28) ) {
@@ -2711,61 +2733,39 @@ public class ExtendedStaticJavaParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(343);
-				exp(19);
-				}
-				break;
-			case 6:
-				{
-				_localctx = new UnaryExpContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-				setState(344);
-				((UnaryExpContext)_localctx).op = match(T__29);
-				setState(345);
-				exp(18);
-				}
-				break;
-			case 7:
-				{
-				_localctx = new UnaryExpContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-				setState(346);
-				((UnaryExpContext)_localctx).op = match(T__30);
-				setState(347);
-				exp(17);
+				setState(348);
+				exp(15);
 				}
 				break;
 			case 8:
 				{
-				_localctx = new ParenExpContext(_localctx);
+				_localctx = new UnaryExpContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(348);
-				match(T__7);
 				setState(349);
-				exp(0);
+				((UnaryExpContext)_localctx).op = match(T__29);
 				setState(350);
-				match(T__10);
+				exp(14);
 				}
 				break;
 			case 9:
 				{
-				_localctx = new InvokeExpContext(_localctx);
+				_localctx = new UnaryExpContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
+				setState(351);
+				((UnaryExpContext)_localctx).op = match(T__30);
 				setState(352);
-				invoke();
+				exp(13);
 				}
 				break;
 			case 10:
 				{
-				_localctx = new IdExpContext(_localctx);
+				_localctx = new InvokeExpContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(353);
-				match(ID);
+				invoke();
 				}
 				break;
 			case 11:
@@ -2836,7 +2836,7 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(372);
-						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
+						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
 						setState(373);
 						((BinaryExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2849,7 +2849,7 @@ public class ExtendedStaticJavaParser extends Parser {
 							consume();
 						}
 						setState(374);
-						((BinaryExpContext)_localctx).e2 = exp(17);
+						((BinaryExpContext)_localctx).e2 = exp(13);
 						}
 						break;
 					case 2:
@@ -2858,7 +2858,7 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(375);
-						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
 						setState(376);
 						((BinaryExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2871,7 +2871,7 @@ public class ExtendedStaticJavaParser extends Parser {
 							consume();
 						}
 						setState(377);
-						((BinaryExpContext)_localctx).e2 = exp(16);
+						((BinaryExpContext)_localctx).e2 = exp(12);
 						}
 						break;
 					case 3:
@@ -2880,7 +2880,7 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(378);
-						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
 						setState(379);
 						((BinaryExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2893,7 +2893,7 @@ public class ExtendedStaticJavaParser extends Parser {
 							consume();
 						}
 						setState(380);
-						((BinaryExpContext)_localctx).e2 = exp(15);
+						((BinaryExpContext)_localctx).e2 = exp(11);
 						}
 						break;
 					case 4:
@@ -2902,7 +2902,7 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(381);
-						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
 						setState(382);
 						((BinaryExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2915,7 +2915,7 @@ public class ExtendedStaticJavaParser extends Parser {
 							consume();
 						}
 						setState(383);
-						((BinaryExpContext)_localctx).e2 = exp(14);
+						((BinaryExpContext)_localctx).e2 = exp(10);
 						}
 						break;
 					case 5:
@@ -2924,7 +2924,7 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(384);
-						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(385);
 						((BinaryExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -2937,7 +2937,7 @@ public class ExtendedStaticJavaParser extends Parser {
 							consume();
 						}
 						setState(386);
-						((BinaryExpContext)_localctx).e2 = exp(13);
+						((BinaryExpContext)_localctx).e2 = exp(9);
 						}
 						break;
 					case 6:
@@ -2946,11 +2946,11 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(387);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(388);
 						((BinaryExpContext)_localctx).op = match(T__43);
 						setState(389);
-						((BinaryExpContext)_localctx).e2 = exp(12);
+						((BinaryExpContext)_localctx).e2 = exp(8);
 						}
 						break;
 					case 7:
@@ -2959,11 +2959,11 @@ public class ExtendedStaticJavaParser extends Parser {
 						((BinaryExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(390);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(391);
 						((BinaryExpContext)_localctx).op = match(T__44);
 						setState(392);
-						((BinaryExpContext)_localctx).e2 = exp(11);
+						((BinaryExpContext)_localctx).e2 = exp(7);
 						}
 						break;
 					case 8:
@@ -2985,29 +2985,29 @@ public class ExtendedStaticJavaParser extends Parser {
 						break;
 					case 9:
 						{
-						_localctx = new FieldAccessExpContext(new ExpContext(_parentctx, _parentState));
+						_localctx = new ArrayAccessExpContext(new ExpContext(_parentctx, _parentState));
+						((ArrayAccessExpContext)_localctx).e1 = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
 						setState(399);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
 						setState(400);
-						match(T__15);
+						match(T__8);
 						setState(401);
-						match(ID);
+						((ArrayAccessExpContext)_localctx).e2 = exp(0);
+						setState(402);
+						match(T__9);
 						}
 						break;
 					case 10:
 						{
-						_localctx = new ArrayAccessExpContext(new ExpContext(_parentctx, _parentState));
-						((ArrayAccessExpContext)_localctx).e1 = _prevctx;
+						_localctx = new FieldAccessExpContext(new ExpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
-						setState(402);
-						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(403);
-						match(T__8);
 						setState(404);
-						((ArrayAccessExpContext)_localctx).e2 = exp(0);
+						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
 						setState(405);
-						match(T__9);
+						match(T__15);
+						setState(406);
+						match(ID);
 						}
 						break;
 					}
@@ -3262,25 +3262,25 @@ public class ExtendedStaticJavaParser extends Parser {
 		case 2:
 			return  new java.math.BigInteger((((IntLiteralContext)_localctx).INT!=null?((IntLiteralContext)_localctx).INT.getText():null)).bitLength() < 32 ;
 		case 3:
-			return precpred(_ctx, 16);
-		case 4:
-			return precpred(_ctx, 15);
-		case 5:
-			return precpred(_ctx, 14);
-		case 6:
-			return precpred(_ctx, 13);
-		case 7:
 			return precpred(_ctx, 12);
-		case 8:
+		case 4:
 			return precpred(_ctx, 11);
-		case 9:
+		case 5:
 			return precpred(_ctx, 10);
+		case 6:
+			return precpred(_ctx, 9);
+		case 7:
+			return precpred(_ctx, 8);
+		case 8:
+			return precpred(_ctx, 7);
+		case 9:
+			return precpred(_ctx, 6);
 		case 10:
 			return precpred(_ctx, 1);
 		case 11:
-			return precpred(_ctx, 3);
+			return precpred(_ctx, 17);
 		case 12:
-			return precpred(_ctx, 2);
+			return precpred(_ctx, 16);
 		}
 		return true;
 	}
@@ -3405,31 +3405,31 @@ public class ExtendedStaticJavaParser extends Parser {
 		"=\3\2\2\2\u014c\u014d\5@!\2\u014d\u014e\7\7\2\2\u014e?\3\2\2\2\u014f\u0150"+
 		"\5,\27\2\u0150\u0151\t\2\2\2\u0151A\3\2\2\2\u0152\u0153\b\"\1\2\u0153"+
 		"\u0175\7\33\2\2\u0154\u0175\7\34\2\2\u0155\u0156\7\64\2\2\u0156\u0175"+
-		"\6\"\4\3\u0157\u0175\7\35\2\2\u0158\u0159\t\3\2\2\u0159\u0175\5B\"\25"+
-		"\u015a\u015b\7 \2\2\u015b\u0175\5B\"\24\u015c\u015d\7!\2\2\u015d\u0175"+
-		"\5B\"\23\u015e\u015f\7\n\2\2\u015f\u0160\5B\"\2\u0160\u0161\7\r\2\2\u0161"+
-		"\u0175\3\2\2\2\u0162\u0175\5F$\2\u0163\u0175\7\63\2\2\u0164\u0165\7\60"+
-		"\2\2\u0165\u0166\7\63\2\2\u0166\u0167\7\n\2\2\u0167\u0175\7\r\2\2\u0168"+
+		"\6\"\4\3\u0157\u0175\7\35\2\2\u0158\u0175\7\63\2\2\u0159\u015a\7\n\2\2"+
+		"\u015a\u015b\5B\"\2\u015b\u015c\7\r\2\2\u015c\u0175\3\2\2\2\u015d\u015e"+
+		"\t\3\2\2\u015e\u0175\5B\"\21\u015f\u0160\7 \2\2\u0160\u0175\5B\"\20\u0161"+
+		"\u0162\7!\2\2\u0162\u0175\5B\"\17\u0163\u0175\5F$\2\u0164\u0165\7\60\2"+
+		"\2\u0165\u0166\7\63\2\2\u0166\u0167\7\n\2\2\u0167\u0175\7\r\2\2\u0168"+
 		"\u0169\7\60\2\2\u0169\u016a\5\22\n\2\u016a\u016b\7\13\2\2\u016b\u016c"+
 		"\5B\"\2\u016c\u016d\7\f\2\2\u016d\u0175\3\2\2\2\u016e\u016f\7\60\2\2\u016f"+
 		"\u0170\5\22\n\2\u0170\u0171\7\13\2\2\u0171\u0172\7\f\2\2\u0172\u0173\5"+
 		"D#\2\u0173\u0175\3\2\2\2\u0174\u0152\3\2\2\2\u0174\u0154\3\2\2\2\u0174"+
-		"\u0155\3\2\2\2\u0174\u0157\3\2\2\2\u0174\u0158\3\2\2\2\u0174\u015a\3\2"+
-		"\2\2\u0174\u015c\3\2\2\2\u0174\u015e\3\2\2\2\u0174\u0162\3\2\2\2\u0174"+
+		"\u0155\3\2\2\2\u0174\u0157\3\2\2\2\u0174\u0158\3\2\2\2\u0174\u0159\3\2"+
+		"\2\2\u0174\u015d\3\2\2\2\u0174\u015f\3\2\2\2\u0174\u0161\3\2\2\2\u0174"+
 		"\u0163\3\2\2\2\u0174\u0164\3\2\2\2\u0174\u0168\3\2\2\2\u0174\u016e\3\2"+
-		"\2\2\u0175\u019b\3\2\2\2\u0176\u0177\f\22\2\2\u0177\u0178\t\4\2\2\u0178"+
-		"\u019a\5B\"\23\u0179\u017a\f\21\2\2\u017a\u017b\t\3\2\2\u017b\u019a\5"+
-		"B\"\22\u017c\u017d\f\20\2\2\u017d\u017e\t\5\2\2\u017e\u019a\5B\"\21\u017f"+
-		"\u0180\f\17\2\2\u0180\u0181\t\6\2\2\u0181\u019a\5B\"\20\u0182\u0183\f"+
-		"\16\2\2\u0183\u0184\t\7\2\2\u0184\u019a\5B\"\17\u0185\u0186\f\r\2\2\u0186"+
-		"\u0187\7.\2\2\u0187\u019a\5B\"\16\u0188\u0189\f\f\2\2\u0189\u018a\7/\2"+
-		"\2\u018a\u019a\5B\"\r\u018b\u018c\f\3\2\2\u018c\u018d\7\61\2\2\u018d\u018e"+
+		"\2\2\u0175\u019b\3\2\2\2\u0176\u0177\f\16\2\2\u0177\u0178\t\4\2\2\u0178"+
+		"\u019a\5B\"\17\u0179\u017a\f\r\2\2\u017a\u017b\t\3\2\2\u017b\u019a\5B"+
+		"\"\16\u017c\u017d\f\f\2\2\u017d\u017e\t\5\2\2\u017e\u019a\5B\"\r\u017f"+
+		"\u0180\f\13\2\2\u0180\u0181\t\6\2\2\u0181\u019a\5B\"\f\u0182\u0183\f\n"+
+		"\2\2\u0183\u0184\t\7\2\2\u0184\u019a\5B\"\13\u0185\u0186\f\t\2\2\u0186"+
+		"\u0187\7.\2\2\u0187\u019a\5B\"\n\u0188\u0189\f\b\2\2\u0189\u018a\7/\2"+
+		"\2\u018a\u019a\5B\"\t\u018b\u018c\f\3\2\2\u018c\u018d\7\61\2\2\u018d\u018e"+
 		"\5B\"\2\u018e\u018f\7\62\2\2\u018f\u0190\5B\"\4\u0190\u019a\3\2\2\2\u0191"+
-		"\u0192\f\5\2\2\u0192\u0193\7\22\2\2\u0193\u019a\7\63\2\2\u0194\u0195\f"+
-		"\4\2\2\u0195\u0196\7\13\2\2\u0196\u0197\5B\"\2\u0197\u0198\7\f\2\2\u0198"+
-		"\u019a\3\2\2\2\u0199\u0176\3\2\2\2\u0199\u0179\3\2\2\2\u0199\u017c\3\2"+
-		"\2\2\u0199\u017f\3\2\2\2\u0199\u0182\3\2\2\2\u0199\u0185\3\2\2\2\u0199"+
-		"\u0188\3\2\2\2\u0199\u018b\3\2\2\2\u0199\u0191\3\2\2\2\u0199\u0194\3\2"+
+		"\u0192\f\23\2\2\u0192\u0193\7\13\2\2\u0193\u0194\5B\"\2\u0194\u0195\7"+
+		"\f\2\2\u0195\u019a\3\2\2\2\u0196\u0197\f\22\2\2\u0197\u0198\7\22\2\2\u0198"+
+		"\u019a\7\63\2\2\u0199\u0176\3\2\2\2\u0199\u0179\3\2\2\2\u0199\u017c\3"+
+		"\2\2\2\u0199\u017f\3\2\2\2\u0199\u0182\3\2\2\2\u0199\u0185\3\2\2\2\u0199"+
+		"\u0188\3\2\2\2\u0199\u018b\3\2\2\2\u0199\u0191\3\2\2\2\u0199\u0196\3\2"+
 		"\2\2\u019a\u019d\3\2\2\2\u019b\u0199\3\2\2\2\u019b\u019c\3\2\2\2\u019c"+
 		"C\3\2\2\2\u019d\u019b\3\2\2\2\u019e\u019f\7\4\2\2\u019f\u01a4\5B\"\2\u01a0"+
 		"\u01a1\7\20\2\2\u01a1\u01a3\5B\"\2\u01a2\u01a0\3\2\2\2\u01a3\u01a6\3\2"+

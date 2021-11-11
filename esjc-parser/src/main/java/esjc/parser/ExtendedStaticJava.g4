@@ -159,6 +159,10 @@ exp
   | INT                      { new java.math.BigInteger($INT.text).bitLength() < 32 }?
                              #IntLiteral
   | 'null'                   #NullLiteral
+  | ID                       #IdExp
+  | '(' exp ')'              #ParenExp
+  | e1=exp '[' e2=exp ']'    #ArrayAccessExp
+  | exp '.' ID               #FieldAccessExp
   | op=( '-' | '+' ) exp     #UnaryExp
   | op='!' exp               #UnaryExp
   | op='~' exp               #UnaryExp
@@ -179,14 +183,10 @@ exp
     e2=exp                   #BinaryExp
   | e1=exp op='&&' e2=exp    #BinaryExp
   | e1=exp op='||' e2=exp    #BinaryExp
-  | '(' exp ')'              #ParenExp
   | invoke                   #InvokeExp
-  | ID                       #IdExp
   | 'new' ID '(' ')'         #NewExp
   | 'new' type '[' exp ']'   #NewArrExp
   | 'new' type '[' ']' arrayInit  #NewArrExp
-  | exp '.' ID               #FieldAccessExp
-  | e1=exp '[' e2=exp ']'          #ArrayAccessExp
   | e1=exp '?' e2=exp ':' e3=exp  #CondExp
   ;
 
