@@ -1,5 +1,6 @@
 package sjc.codegen;
 
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,11 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.util.ASMifier;
+import org.objectweb.asm.util.Textifier;
+import org.objectweb.asm.util.TraceClassVisitor;
 
+import org.objectweb.asm.util.TraceMethodVisitor;
 import sjc.annotation.NonNull;
 import sjc.annotation.NonNullElements;
 import sjc.annotation.NonNullElementsOnly;
@@ -52,6 +57,8 @@ import sjc.type.Type;
 import sjc.type.VoidType;
 import sjc.type.checker.TypeTable;
 import sjc.util.Pair;
+
+import static org.objectweb.asm.Opcodes.ASM4;
 
 /**
  * This class is used to translate a StaticJava {@link CompilationUnit} to
@@ -413,6 +420,16 @@ public class ByteCodeGenerator {
           methodDesc,
           null,
           null);
+
+      // INFO: TraceMethodVisitor can be used for a debugging purpose.
+//      PrintWriter pw = new PrintWriter(System.out, true);
+//      this.mv = new TraceMethodVisitor(this.mv, new Textifier(ASM4) {
+//        @Override public void visitMethodEnd() {
+//          print(pw); // print it after it has been visited
+//          pw.flush();
+//        }
+//      });
+
       this.mv.visitCode();
       final Label initLabel = new Label();
       this.mv.visitLabel(initLabel);
@@ -563,6 +580,10 @@ public class ByteCodeGenerator {
       this.mainClassName = node.getName().getIdentifier();
       this.cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES
           | ClassWriter.COMPUTE_MAXS);
+
+      // INFO: TraceClassVisitor can be used for a debugging purpose.
+      // TraceClassVisitor cv = new TraceClassVisitor(this.cw, new PrintWriter(System.out));
+
       this.cw.visit(
           Opcodes.V1_5,
           Opcodes.ACC_PUBLIC + Opcodes.ACC_SUPER,
