@@ -62,7 +62,7 @@ lazy val esjcTypeChecker = {
     dependsOn(sjc, esjcParser, esjcAst)
   `esjc-typechecker`
 }
-/*
+
 lazy val esjcCodeGen = {
   val `esjc-codegen` = (project in file("esjc-codegen")).
     settings(commonSettings: _*).
@@ -70,7 +70,7 @@ lazy val esjcCodeGen = {
   `esjc-codegen`
 }
 
-
+/*
 lazy val esjcTranspiler = {
   val `esjc-transpiler` = (project in file("esjc-transpiler")).
     settings(commonSettings: _*).
