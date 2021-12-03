@@ -422,13 +422,13 @@ public class ByteCodeGenerator {
           null);
 
       // INFO: TraceMethodVisitor can be used for a debugging purpose.
-//      PrintWriter pw = new PrintWriter(System.out, true);
-//      this.mv = new TraceMethodVisitor(this.mv, new Textifier(ASM4) {
-//        @Override public void visitMethodEnd() {
-//          print(pw); // print it after it has been visited
-//          pw.flush();
-//        }
-//      });
+/*      PrintWriter pw = new PrintWriter(System.out, true);
+      this.mv = new TraceMethodVisitor(this.mv, new Textifier(ASM4) {
+        @Override public void visitMethodEnd() {
+          print(pw); // print it after it has been visited
+          pw.flush();
+        }
+      });*/
 
       this.mv.visitCode();
       final Label initLabel = new Label();
